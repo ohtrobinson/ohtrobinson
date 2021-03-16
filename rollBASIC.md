@@ -151,3 +151,41 @@ Returns the avatar URL of the command author. Can be used in embeds.
 
 ### $randMAX_NUMBER
 (Example: `$rand100`) return a number between 0 and the max number.
+
+# Example code
+```
+variable channel 814478934074327090
+variable sendChannel 814478960351903764
+if $getCommandChannel != $sendChannel
+sendembed {"description":"Please submit your suggestion in <#$sendChannel>!", "color":"0xFF0000"}
+stop
+endif
+delete $getCommandMessage
+variable text $getMessageArgs
+if $text == $undefined
+sendembed --store noSuggestionMessage {"description":"You need to provide a suggestion! A blank suggestion cannot be submitted.", "color":"0xFF0000"}
+sleep 5000
+delete $noSuggestionMessage
+stop
+endif
+variable id $rand99999
+load text$id check
+if $check != $undefined
+sendembed --store oopsMessage {"description":"Sorry, something went a bit wrong. Please try again, if this error keeps occuring, please contact @Toasty", "color":"0xFF0000"}
+sleep 5000
+delete $oopsMessage
+stop
+endif
+sendembed --store embed --channel $channel {"title":"New Music Suggestion", "description":" $getMessageArgs ", "author":{"name":" $getCommandAuthorDisplayName ", "icon_url":" $getCommandAuthorPicture "}, "color":"0xFFFF00", "footer":{"text":"ID: $id "}}
+sendembed --store sentMessage {"description":"Your suggestion has been submitted!", "color":"0x00FF00"}
+react $embed :white_check_mark: $channel
+react $embed :x: $channel
+react $embed :thinking: $channel
+store text$id $getMessageArgs
+store author$id $getCommandAuthor
+store authorDisplayName$id $getCommandAuthorDisplayName
+store authorPicture$id $getCommandAuthorPicture
+store message$id $embed
+sleep 5000
+delete $sentMessage
+```
