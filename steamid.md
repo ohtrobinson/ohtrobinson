@@ -1,5 +1,12 @@
 # How to find your Steam ID
-Finding your Steam ID is easy, however not always intuitive at first glance. This guide will show you how to find your Steam ID in X easy steps.
+Finding your Steam ID is easy, however not always intuitive at first glance. This guide will show you how to find your Steam ID in 7 easy steps.
+
+### What do we use your Steam ID for?
+The main purpose of your Steam ID is to add you to the server whitelist. If you don't provide a valid Steam ID, we can't whitelist you!
+
+The bot also stores your Steam ID. This is so, if need be, we can change things about you in-game, for example, changing your rank. And if worst comes to worst, we also store your Steam ID just in case we need to revoke your verification for whatever reason.
+
+### Guide
 
 First, you'll want to head to [steamid.io](https://steamid.io).
 
