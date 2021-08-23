@@ -1,7 +1,10 @@
-# Key
+# rollBASIC v1
+**NOTE:** rollBASIC v1 is considered legacy and is no longer being updated. While it is included in roll v2, it is highly recommended that you use rollBASIC v2 as its development is active & maintained, plus it is a much more versatile language overall.
+
+## Key
 `[Allows variables]` in a description means you can substitute values with `$variables`.
 
-# Commands
+## Commands
 ### send TEXT
 [Allows variables] Send a message as the bot.
 
@@ -109,7 +112,7 @@ Sleep for the given number of milliseconds.
 #### Example
 `sleep 1000`
 
-# Built in variables
+## Built in variables
 
 ### $guildMemberCount
 Returns the number of members in the guild.
@@ -152,7 +155,24 @@ Returns the avatar URL of the command author. Can be used in embeds.
 ### $randMAX_NUMBER
 (Example: `$rand100`) return a number between 0 and the max number.
 
-# Example code
+## Things to watch out for
+rollBASIC v1 is an interpreted language. This means each line is read seperately, and then the appropriate code is executed, before the next line is read. This is in contrast to v2, which gets compiled to JavaScript and is then executed as JavaScript. This means your code may run quite slowly, and also is the direct cause of some of the issues noted below.
+
+When using rollBASIC v1, there are some things you need to watch out for:
+* Nested if statements are not possible.
+* Else & else if statements simply do not exist.
+* You cannot use comments.
+* There must not be spaces between lines. Each line must contain code on it.
+* Everything in rollBASIC are strings. This means math is not possible.
+* String concatenation does not exist.
+* Operators must have spaces around them
+    * For example, `if $text==$undefined` is not possible and will throw an error. Your code must be `if $text == $undefined`
+* If statements can only have one condition inside of them. `or` and `and` is not possible.
+* Any alphanumeric character following a `$` will be interpreted as a variable name.
+
+**NOTE:** In rollBASIC v2, **all** of these issues have been fixed.
+
+## Example code
 ```
 variable channel 814478934074327090
 variable sendChannel 814478960351903764
