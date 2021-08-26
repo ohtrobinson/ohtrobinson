@@ -3,6 +3,7 @@ This reference contains every built-in function, variable, and keyword you can u
 
 ## Key
 * Optional parameters are marked with a `?` after their name. This means the parameter is optional and does not need to be filled.
+* Parameters with `...` after the parameter name accept infinite parameters, seperated with a comma.
 
 ## Functions
 ### send(message, channelID?)
