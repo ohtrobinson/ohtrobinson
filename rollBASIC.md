@@ -9,25 +9,26 @@ This reference contains every built-in function, variable, and keyword you can u
 Send a message to the (optional) given channel ID. If no channel ID is provided, the message will be sent to the current channel.
 
 #### Example
-`send("Hey there!")`
+`send("Hey there!") as mesg`
 
-`send("Hello!", getChannel("my-channel-name"))`
+`send("Hello!", getChannel("my-channel-name")) as mesg`
 
 #### Parameters
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | message | String | The message to send. |
-| channelID? | String | The channel ID to send the message to. |
+| channelID? | String | The channel ID to send the message to. If none is provided, this value will default to the current channel ID. |
 
 #### Returns
 | Type | Description |
+| ---- | ----------- |
 | String | The sent message ID. |
 
 ### sendEmbed(title, description, color, fields)
 Send an embed message to the channel.
 
 #### Example
-`sendEmbed("Title", "Description", "#FF0000", Array(EmbedField("Name", "Value")))`
+`sendEmbed("Title", "Description", "#FF0000", Array(EmbedField("Name", "Value"))) as mesg`
 
 #### Parameters
 | Name | Type | Description |
@@ -39,6 +40,7 @@ Send an embed message to the channel.
 
 #### Returns
 | Type | Description |
+| ---- | ----------- |
 | String | The sent message ID. |
 
 ### getChannel(channelNameOrId)
@@ -155,3 +157,47 @@ Return the array element at the given index. NOTE: Arrays are zero-indexed. NOTE
 | Type | Description |
 | ---- | ----------- |
 | String | The element at the given index. |
+
+## Objects
+Objects represent certain element types, that can be accessed with certain functions. Objects cannot be used like classes or structs, so the `.` or `->` operators cannot be used. Object attributes can only be accessed with the given function.
+
+Object "constructors" work exactly like functions. That is because to the compiler, objects essentially _are_ functions. However, they do create a JavaScript object, which is why they are treated as objects and not functions. Object "constructors" are discerned by using PascalCase instead of camelCase which functions use.
+
+### Array(elements...)
+Represents an array of elements.
+
+#### Example
+`Array("hello", "there", "item 3") as arr`
+
+#### Parameters
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| elements | Any | Represents an array of items, seperated by a comma. There is no maximum length of items. |
+
+### EmbedField(name, value, inline?)
+Represents an embed field, consisting of a name (the white title), the value (the gray text), and whether it is inline (on the same line as up to 3 other fields). By default, this value is false.
+
+#### Example
+`EmbedField("Name", "Value") as field`
+
+`EmbedField("Name", "Value", true) as field`
+
+#### Parameters
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | String | The name of the field. |
+| value | String | The value of the field. |
+| inline? | Boolean | Whether the field is inline or not. By default, this is false. |
+
+### Color(r, g, b)
+Represents an RGB colour, which gets converted to a hex string. NOTE: This constructor currently uses strings. Literally, you need to encase the number in "" speech marks. **This will be fixed in due course.**
+
+#### Example
+`Color("255", "128", "34") as col`
+
+#### Parameters
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| r | String | Represents the red component of this colour. |
+| g | String | Represents the green component of this colour. |
+| b | String | Represents the blue component of this colour. |
