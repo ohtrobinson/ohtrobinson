@@ -34,10 +34,10 @@ end
 
 Note: You must include an "as" value. Howver, you do not need to include "times". `repeat for 5 as i` will work just fine.
 
-## if
+### if
 If statements have not yet been implemented. - This is on the todo list.
 
-## end
+### end
 All if statements & repeat statements must have an `end` statement at the end of it. Use the loop example above:
 
 ```
