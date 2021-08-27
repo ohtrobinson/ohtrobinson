@@ -1,7 +1,89 @@
 # rollBASIC Reference
-This reference contains every built-in function, variable, and keyword you can use.
+This reference contains every built-in function, variable, statement, and keyword you can use.
 
-## Key
+rollBASIC syntax has been inspired off of various different programming languages. Its syntax however is mostly constrained around the compiler, and does contain some unusual things not found in C-like programming languages.
+
+To use rollBASIC effectively, you must get used to the `is` and `as` keywords, to define variables. While the `is` keyword can be substituted with `=` when defining variables, its usage is not recommended and may be removed from future updates. In if statements, the `is` keyword cannot be substituted with `=`.
+
+## Variables
+Defining variables is done in one of three ways.
+`x is "hello"` - The recommended way to create variables in this form factor.
+
+`x = "hello"` - Not recommended. May be removed in later iterations of rollBASIC.
+
+When using functions, or the `repeat` statement, the `as` keyword is used.
+
+`getChannel("general") as channel`
+
+`repeat for 5 times as i`
+
+These values can be used just like regular variables, they are just defined differently. Note that `"hello" as x` will NOT work under any circumstances.
+
+## Statements
+### repeat
+The `repeat` statement means a loop will be used. There are two types of loops, which you may be familliar with. `for`, and `while`. Note that these loops have some limitations. A `for` loop cannot repeat for more than 255 times. The total number of loops for a script cannot exeed 1000 currently. This is to reduce load on roll itself, to make sure the bot runs fast and well for everyone. These limits are subject to change (although are unlikely to decrease).
+
+Currently, the only loop that has been implemented is the `for` loop.
+For loops can be used as such:
+
+```
+repeat for 5 times as i
+  send(i)
+end
+```
+
+Note: You must include an "as" value. Howver, you do not need to include "times". `repeat for 5 as i` will work just fine.
+
+## if
+If statements have not yet been implemented. - This is on the todo list.
+
+## end
+All if statements & repeat statements must have an `end` statement at the end of it. Use the loop example above:
+
+```
+repeat for 5 times as i
+  send(i)
+end
+```
+
+## Comments & spaces
+Like any programming language, you can include line spaces in your code, to make it more legible. This does not count towards your final line count.
+
+Comments cannot currently be used on the same line as code. Comments are denoted using the `#` symbol.
+
+## Operators
+Currently, the only operator is the `+=` operator. This allows you to concatinate a string value to an already existing variable.
+
+## Reserved variable names
+The following variable names cannot be set by the user:
+* msg
+* args
+* code
+* compiled
+* if
+* as
+* is
+* false
+* true
+* none
+* repeat
+
+## Built in variables
+The following variables are built in:
+* `message` - Returns the message ID of the author's message.
+* `message.channel` - Returns the channel ID of the author's message.
+* `message.channel.name` - Returns the channel name of the author's message.
+* `message.channel.mention` - Mentions the channel the author's message was sent in.
+* `message.author` - Mentions the message author.
+* `message.author.displayName` - Returns the message author's **display name** (NOT username)
+* `message.arguments` - Returns an array of arguments for the message. These are seperated by spaces, and can be joined together using the `join` function.
+
+## Literals
+* `true` - Represents a boolean true.
+* `false` - Represents a boolean false.
+* `none` - Represents null or a NoneType.
+
+## Functions & Objects Key
 * Optional parameters are marked with a `?` after their name. This means the parameter is optional and does not need to be filled.
 * Parameters with `...` after the parameter name accept infinite parameters, seperated with a comma.
 
@@ -163,6 +245,8 @@ Return the array element at the given index. NOTE: Arrays are zero-indexed. NOTE
 Objects represent certain element types, that can be accessed with certain functions. Objects cannot be used like classes or structs, so the `.` or `->` operators cannot be used. Object attributes can only be accessed with the given function.
 
 Object "constructors" work exactly like functions. That is because to the compiler, objects essentially _are_ functions. However, they do create a JavaScript object, which is why they are treated as objects and not functions. Object "constructors" are discerned by using PascalCase instead of camelCase which functions use.
+
+Objects, however, are more akin to structs, as they are value types only and do not contain methods. For the purposes of rollBASIC however, they will be referred to as objects, despite not strictly being objects.
 
 ### Array(elements...)
 Represents an array of elements.
