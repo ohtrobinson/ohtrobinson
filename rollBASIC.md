@@ -57,10 +57,10 @@ Currently, the only operator is the `+=` operator. This allows you to concatinat
 
 ## Reserved variable names
 The following variable names cannot be set by the user:
-* msg
-* args
-* code
-* compiled
+* _RBC_MSG
+* _RBC_ARGS
+* _RBC_CODE
+* _RBC_COMPILED
 * if
 * as
 * is
