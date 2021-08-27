@@ -7,6 +7,7 @@ To use rollBASIC effectively, you must get used to the `is` and `as` keywords, t
 
 ## Variables
 Defining variables is done in one of three ways.
+
 `x is "hello"` - The recommended way to create variables in this form factor.
 
 `x = "hello"` - Not recommended. May be removed in later iterations of rollBASIC.
